@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Calculator.css";
+
 export default function Calculator() {
   const [value, setValue] = useState("");
   const [result, setResult] = useState("");
@@ -20,15 +21,19 @@ export default function Calculator() {
       setResult("Error");
     }
   };
+
+  const handleInputChange = (event) => {
+    setValue(event.target.value);
+  };
+
   return (
     <>
-      {/* <h1>React Calculator</h1> */}
       <div className="container">
         <div className="calculator">
           <h1>React Calculator</h1>
           <form action="">
             <div>
-              <input type="text" value={value} />
+              <input type="text" value={value} onChange={handleInputChange} />
             </div>
             <div className="result">{result}</div>
             <div>
